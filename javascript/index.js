@@ -1,5 +1,5 @@
 /** @format */
-
+// config typed auto
 const options = {
   stringsElement: "",
   typeSpeed: 50,
@@ -23,6 +23,7 @@ $(document).ready(function () {
     $('.page-content').show();
   });
 });
+
 
 
 var offset = 200,
@@ -69,6 +70,15 @@ $scoll_down.on('click', function (event) {
   }, scroll_top_duration
   );
 });
+
+document.getElementById('LinkToAbout').addEventListener('click', () => {
+  Element.scroll(0, 1000);
+});
+
+
+
+
+
 
 // press to open navbar
 $(".toggle-btn").on("click", function () {
