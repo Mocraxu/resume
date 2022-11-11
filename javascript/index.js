@@ -23,7 +23,9 @@ $(document).ready(function () {
     $('.page-content').show();
   });
 });
-
+window.onload = function(){
+  document.querySelector(".preloader").style.display = "none";
+}
 
 
 var offset = 200,
