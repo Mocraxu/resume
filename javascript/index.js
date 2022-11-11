@@ -17,12 +17,12 @@ const typingDecsJob = new Typed("#typing-decs-job", {
 });
 
 // preloader
-$(document).ready(function () {
-  $(window).load(function () {
-    $('.preloader').hide();
-    $('.page-content').show();
-  });
-});
+// $(document).ready(function () {
+//   $(window).load(function () {
+//     $('.preloader').hide();
+//     $('.page-content').show();
+//   });
+// });
 window.onload = function(){
   document.querySelector(".preloader").style.display = "none";
 }
