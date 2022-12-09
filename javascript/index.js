@@ -17,77 +17,59 @@ const typingDecsJob = new Typed("#typing-decs-job", {
 });
 
 // preloader
-// $(document).ready(function () {
-//   $(window).load(function () {
-//     $('.preloader').hide();
-//     $('.page-content').show();
-//   });
-// });
-window.onload = function(){
+window.onload = function () {
   document.querySelector(".preloader").style.display = "none";
 }
 
 
-var offset = 200,
-  offset_opacity = 20,
-  scroll_top_duration = 300,
-  $back_to_top = jQuery('.cd-top');
-$scoll_down = jQuery('.cd-down');
+let offset = 200;
+let offsetOpacity = 20;
+let offsetPos = 100;
+let backToTop = document.getElementById('btn-backtotop');
+let scollDown = document.getElementById('btn-scrolldown');
 
-jQuery(window).scroll(function () {
-  // hide/show button to top and button scoll down
-  if (jQuery(this).scrollTop() > offset) {
-    $back_to_top.addClass('cd-is-visible');
-    $scoll_down.removeClass('cd-is-visible cd-fade-out');
+let header = document.getElementById("header")
+let posAbt = document.getElementById("about").offsetTop;
+let posExp = document.getElementById("experience").offsetTop;
+let posKnowledge = document.getElementById("knowledge").offsetTop;
+let posProduct = document.getElementById("products").offsetTop;
+window.onscroll = function () { actionOnScoll() };
+
+function actionOnScoll() {
+  //effect button back-to-top and scoll-down
+  if (document.body.scrollTop > offset || document.documentElement.scrollTop > offset) {
+    backToTop.classList.add('cd-is-visible');
+    scollDown.classList.remove('cd-is-visible', 'cd-fade-out')
   } else {
-    $back_to_top.removeClass('cd-is-visible cd-fade-out');
-    $scoll_down.addClass('cd-is-visible cd-fade-out');
+    backToTop.classList.remove('cd-is-visible', 'cd-fade-out');
+    scollDown.classList.add('cd-is-visible', 'cd-fade-out')
   }
-  if (jQuery(this).scrollTop() > offset_opacity) {
-    $back_to_top.addClass('cd-fade-out');
-    $scoll_down.removeClass('cd-fade-out');
+  if (document.body.scrollTop > offsetOpacity || document.documentElement.scrollTop > offsetOpacity) {
+    backToTop.classList.add('cd-fade-out');
+    scollDown.classList.remove('cd-fade-out')
   }
   //effect header
-  if (jQuery(window).scrollTop() > 50) {
-    jQuery('#header').addClass('header-fixed');
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    header.classList.add('header-fixed')
+  } else {
+    header.classList.remove('header-fixed')
   }
-  else {
-    jQuery('#header').removeClass('header-fixed');
-  }
-});
+}
 
-// press button to top
-$back_to_top.on('click', function (event) {
-  event.preventDefault();
-  jQuery('body,html').animate({
-    scrollTop: 0,
-  }, scroll_top_duration
-  );
-});
-// press button to scoll down
-$scoll_down.on('click', function (event) {
-  event.preventDefault();
-  jQuery('body,html').animate({
-    scrollTop: $('section#about').offset().top - 100,
-  }, scroll_top_duration
-  );
-});
-
-document.getElementById('LinkToAbout').addEventListener('click', () => {
-  Element.scroll(0, 1000);
-});
+// press button back-to-top and scoll-down
+backToTop.onclick = () => { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+scollDown.onclick = () => { window.scrollTo({ top: posAbt - 100, behavior: 'smooth' }); }
 
 
-
-
-
-
-// press to open navbar
-$(".toggle-btn").on("click", function () {
-  $(this).toggleClass("active");
-  $(".bar").toggleClass("change");
-  $(".sidebar-menu").toggleClass("open");
-})
+//effect navbar
+function toggleNavbar() {
+  document.querySelector('.toggle-btn').classList.toggle('active');
+  let elBar = document.querySelectorAll('.bar');
+  elBar.forEach(function(el){
+    el.classList.toggle('change');
+  });
+  document.querySelector('.sidebar-menu').classList.toggle('open');
+}
 
 
 function sendEmail() {

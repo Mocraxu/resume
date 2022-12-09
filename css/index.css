@@ -83,6 +83,10 @@ h6 {
   -webkit-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
 }
+.cd-is-visible{
+  visibility: visible;
+  opacity: 1;
+}
 /* icon svg */
 .social-icon:hover {
   filter: invert(48%) sepia(73%) saturate(1606%) hue-rotate(339deg)
@@ -338,6 +342,7 @@ textarea {
   -moz-transition: all 0.6s ease 0s;
   -o-transition: all 0.6s ease 0s;
 }
+
 #btn-backtotop.cd-fade-out {
   opacity: 0.8;
   filter: invert(48%) sepia(73%) saturate(1606%) hue-rotate(339deg)
